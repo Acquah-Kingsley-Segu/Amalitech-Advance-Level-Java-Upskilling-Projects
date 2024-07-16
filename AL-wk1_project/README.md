@@ -8,4 +8,4 @@ Each folder holds a project created using [IntelliJ IDE](https://www.jetbrains.c
 
 | Folder | Concepts Covered | Description of Project |
 | ------ | ---------------- | ---------------------- |
-| [ForkJoin-Concept](/ForkJoin-Concept) | variables, datatype, operators, arrays, string, and control flow | A simple quessing game where user has 5 changes to guess a random genrated number between [1, 10] |
+| [ForkJoin-Concept](/ForkJoin-Concept) | ForkJoinPool, ForkJoinTask | Used the concept to perform Fibonacci and Parallel Summation  |
