@@ -20,12 +20,12 @@ public class ConfigurationReader {
         }
         return configReader;
     }
-    public void readConfigurations(String fileName) {
+    public void readConfigurations(String fileName, String separator) {
         File file = new File(fileName);
         try(Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] tokens = line.split(":");
+                String[] tokens = line.split(separator);
                 configurations.put(tokens[0], tokens[1]);
             }
         }catch (FileNotFoundException e) {

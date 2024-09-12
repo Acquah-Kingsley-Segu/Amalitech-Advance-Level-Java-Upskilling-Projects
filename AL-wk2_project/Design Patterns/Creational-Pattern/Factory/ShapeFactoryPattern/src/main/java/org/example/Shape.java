@@ -1,2 +1,5 @@
-package org.example;public class Shape {
+package org.example;
+
+public interface  Shape {
+    void draw();
 }
