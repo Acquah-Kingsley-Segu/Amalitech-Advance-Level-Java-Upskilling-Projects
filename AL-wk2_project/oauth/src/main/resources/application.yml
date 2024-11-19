@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: SocialLogin
+  datasource:
+    password: acquah_user
+    username: acquah
+    url: jdbc:postgresql://localhost:5432/movie_app_users
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 421209923151-ish176faabt6iv5o10pscs6m494od2uc.apps.googleusercontent.com
+            client-secret: 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
+          github:
+            client-id: Iv23liwPnBdV5IuG23pj
+            client-secret: f64e8d4f5499b15a55ec3b21a5e563ead7571179
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace

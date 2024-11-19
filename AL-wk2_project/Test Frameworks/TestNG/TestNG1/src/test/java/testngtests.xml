@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestNG Practice">
+    <groups>
+        <run>
+            <exclude name="test*"/>
+        </run>
+    </groups>
+
+    <test name="Asserts">
+        <classes>
+            <class name="TestNgAsserts"/>
+            <class name="TestNgConfigurations"/>
+        </classes>
+    </test>
+    <test name="Depends on">
+        <classes>
+            <class name="TestNgDependsOnMethod"/>
+            <class name="TestNgGroup"/>
+        </classes>
+    </test>
+    <test name="Data Provider">
+        <classes>
+            <class name="TestNgDataProvider"/>
+        </classes>
+    </test>
+</suite>
