@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-boot-user-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8082/eureka
+
+server:
+  port: 8083

@@ -1,0 +1,27 @@
+spring:
+
+  profiles:
+    active: dev
+
+  cloud:
+    config:
+      enabled: true
+
+  config:
+    import: optional:configserver:http://localhost:8080
+
+  application:
+    name: spring-boot-service-registry
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/
+
+
+server:
+  port: 8082
