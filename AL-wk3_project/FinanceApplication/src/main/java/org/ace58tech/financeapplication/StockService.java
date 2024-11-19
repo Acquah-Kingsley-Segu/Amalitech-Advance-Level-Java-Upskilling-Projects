@@ -1,4 +1,4 @@
-package org.ace58tech;
+package org.ace58tech.financeapplication;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.OkHttpClient;
@@ -18,31 +18,25 @@ public class StockService {
 
     private static final OkHttpClient client = new OkHttpClient();
 
-    public static Observable<Double> getStockPrice(String symbol) {
-        return Observable.interval(1, TimeUnit.NANOSECONDS)
-                .map(tick -> fetchLastestPrice(symbol))
-                .filter(Objects::nonNull);
-
+    public Observable<Double> getStockPriceStream(String symbol) {
+        return Observable.interval(1, TimeUnit.MINUTES)
+                .map(tick -> fetchLatestPrice(symbol))
+                .filter(Objects::nonNull);  // Filter out nulls in case of errors
     }
 
-    public static Double fetchLastestPrice(String symbol) {
+    private Double fetchLatestPrice(String symbol) {
         String url = String.format(BASE_URL, symbol, API_KEY);
         Request request = new Request.Builder().url(url).build();
-        System.out.println(request);
 
         try (Response response = client.newCall(request).execute()) {
-            System.out.println(response.isSuccessful());
             if (response.isSuccessful() && response.body() != null) {
-                JSONObject jsonObject = new JSONObject(response.body().string());
-                System.out.println(jsonObject.toString());
-                JSONObject timeSeries = jsonObject.getJSONObject("Time Series (1min)");
-                String lastPrice = timeSeries.keys().next();
-                return timeSeries.getJSONObject(lastPrice).getDouble("4. close");
+                JSONObject json = new JSONObject(response.body().string());
+                JSONObject timeSeries = json.getJSONObject("Time Series (1min)");
+                String latestTime = timeSeries.keys().next();
+                return timeSeries.getJSONObject(latestTime).getDouble("4. close");
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }catch (JSONException e){
-            System.out.println(e.getLocalizedMessage());
         }
         return null;
     }
