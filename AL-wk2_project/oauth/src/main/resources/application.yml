@@ -11,11 +11,11 @@ spring:
       client:
         registration:
           google:
-            client-id: 421209923151-ish176faabt6iv5o10pscs6m494od2uc.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ${google_id}
+            client-secret: ${google_client_secret}
           github:
-            client-id: Iv23liwPnBdV5IuG23pj
-            client-secret: f64e8d4f5499b15a55ec3b21a5e563ead7571179
+            client-id: ${github_id}
+            client-secret: ${github_client_id}
   jpa:
     hibernate:
       ddl-auto: update
